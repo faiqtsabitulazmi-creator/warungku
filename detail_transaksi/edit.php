@@ -1,4 +1,8 @@
-<?php include 'action.php' ?>
+<?php 
+include 'action.php';
+$id = $_GET['id'];
+$data = showDataEditDetailTransaksi($conn, $id)->fetch_assoc();
+?>
 <!DOCTYPE html>
 
 <html class="light" lang="en">
@@ -172,8 +176,8 @@
                 <!-- Header Section -->
                 <div class="flex flex-col md:flex-row md:items-center justify-between mb-lg gap-4">
                     <div>
-                        <h1 class="font-headline-lg text-on-surface">Add New Product</h1>
-                        <p class="text-body-md text-on-surface-variant">Create a new entry for your store's product.</p>
+                        <h1 class="font-headline-lg text-on-surface">Edit Detail Transaksi</h1>
+                        <p class="text-body-md text-on-surface-variant">Edit detail_transaksi to your store's detail_transaksis.</p>
                     </div>
 
                 </div>
@@ -186,33 +190,37 @@
 
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-md">
                                 <div class="md:col-span-2 flex flex-col gap-xs">
-                                    <form action="action.php?aksi=insert" method="post" enctype="multipart/form-data">
-                                        <label class="font-label-md text-on-surface-variant">Nama</label>
-                                        <input class="w-full p-md border border-outline-variant rounded-lg font-body-md focus:ring-2 focus:ring-primary-container focus:outline-none" placeholder="e.g. Nike" type="text" name="nama_user" />
-                                        <label class="font-label-md text-on-surface-variant">Alamat</label>
-                                        <input class="w-full p-md border border-outline-variant rounded-lg font-body-md focus:ring-2 focus:ring-primary-container focus:outline-none" placeholder="e.g. Rp 2000" type="text" name="alamat" />
-                                        <label class="font-label-md text-on-surface-variant">No_hp</label>
-                                        <input class="w-full p-md border border-outline-variant rounded-lg font-body-md focus:ring-2 focus:ring-primary-container focus:outline-none" placeholder="e.g. Nike" type="text" name="no_hp" />
-                                        <label class="font-label-md text-on-surface-variant">Username</label>
-                                        <input class="w-full p-md border border-outline-variant rounded-lg font-body-md focus:ring-2 focus:ring-primary-container focus:outline-none" placeholder="e.g. Nike" type="text" name="username" />
-                                           <label class="font-label-md text-on-surface-variant mt-3">Password</label>
-                                        <input class="w-full p-md border border-outline-variant rounded-lg font-body-md focus:ring-2 focus:ring-primary-container focus:outline-none" placeholder="e.g. ********" type="password" name="password"/>
-                                        <label class="font-label-md text-on-surface-variant">Role</label>
-                                        <select class="w-full p-md border border-outline-variant rounded-lg font-body-md focus:ring-2 focus:ring-primary-container focus:outline-none" name="id_role" id="">
+                                    <form action="action.php?aksi=update" method="post">
+                                        <input type="hidden" name="id" value="<?= $data['id'] ?>">
+                                        <label class="font-label-md text-on-surface-variant">ID Transaksi</label>
+                                        <select name="id_transaksi" class="w-full p-md border border-outline-variant rounded-lg font-body-md focus:ring-2 focus:ring-primary-container focus:outline-none">
                                             <?php
-                                            $dataRole = showDataRole($conn);
-
-                                            while ($row = $dataRole->fetch_assoc()) {
-                                            ?>
-
-                                                <option value="<?= $row['id'] ?>"><?= $row['nama'] ?></option>
-
-                                            <?php }
-
-
+                                            $transaksis = showDataTransaksi($conn);
+                                            while ($t = $transaksis->fetch_assoc()) {
+                                                $selected = ($t['id'] == $data['id_transaksi']) ? 'selected' : '';
+                                                echo "<option value='{$t['id']}' $selected>Transaksi #{$t['id']}</option>";
+                                            }
                                             ?>
                                         </select>
+                                        
+                                        <label class="font-label-md text-on-surface-variant mt-3">Produk</label>
+                                        <select name="id_product" class="w-full p-md border border-outline-variant rounded-lg font-body-md focus:ring-2 focus:ring-primary-container focus:outline-none">
+                                            <?php
+                                            $products = showDataProduct($conn);
+                                            while ($p = $products->fetch_assoc()) {
+                                                $selected = ($p['id'] == $data['id_product']) ? 'selected' : '';
+                                                echo "<option value='{$p['id']}' $selected>{$p['nama']}</option>";
+                                            }
+                                            ?>
+                                        </select>
+                                        
+                                        <label class="font-label-md text-on-surface-variant mt-3">Jumlah</label>
+                                        <input class="w-full p-md border border-outline-variant rounded-lg font-body-md focus:ring-2 focus:ring-primary-container focus:outline-none" placeholder="e.g. 2" type="number" name="jumlah" value="<?= $data['jumlah'] ?>" />
+                                        
+                                        <label class="font-label-md text-on-surface-variant mt-3">Total Jumlah</label>
+                                        <input class="w-full p-md border border-outline-variant rounded-lg font-body-md focus:ring-2 focus:ring-primary-container focus:outline-none" placeholder="e.g. 300000" type="number" name="total_jumlah" value="<?= $data['total_jumlah'] ?>" />
 
+                                    
                                 </div>
 
                             </div>
@@ -222,10 +230,12 @@
                                 </a>
                                 <button type="submit" class="px-lg py-3 rounded-xl bg-primary text-on-primary font-label-lg hover:opacity-90 transition-opacity flex items-center gap-2">
                                     <span class="material-symbols-outlined" data-icon="save">save</span>
-                                    Save User
+                                    Save Detail Transaksi
                                 </button>
+                                
 
-                            </div>
+                               </div>
+                            </form>
                         </section>
 
                     </div>

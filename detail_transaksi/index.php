@@ -1,7 +1,4 @@
-<?php
-include 'action.php';
-?>
-
+<?php include 'action.php'; ?>
 <!DOCTYPE html>
 
 <html class="light" lang="en">
@@ -29,10 +26,10 @@ include 'action.php';
                         "surface-bright": "#f7f9fb",
                         "on-secondary-fixed": "#0b1c30",
                         "on-error": "#ffffff",
-                        "surface-tint": "#3f7262",
+                        "surface-tint": "#006c49",
                         "secondary-fixed": "#d3e4fe",
                         "surface-container-high": "#e6e8ea",
-                        "primary": "#376b5a",
+                        "primary": "#006c49",
                         "outline": "#6c7a71",
                         "tertiary-fixed-dim": "#ffb95f",
                         "tertiary": "#855300",
@@ -157,61 +154,76 @@ include 'action.php';
     </style>
 </head>
 
-<body class="bg-emerald-600 text-on-surface flex min-h-screen">
+<body class="bg-surface text-on-surface flex min-h-screen">
     <!-- SideNavBar (Shared Component) -->
-    <?php require_once '../layout/sidebar.php'; ?>
+    <?php
+    require_once '../layout/sidebar.php';
+    ?>
     <!-- Main Content Area -->
     <main class="flex-1 flex flex-col h-screen overflow-hidden">
         <!-- TopNavBar (Shared Component) -->
-        <?php require_once '../layout/topnavbar.php'; ?>
+        <?php
+        $page_name = "Detail Transaksi";
+        require_once '../layout/topnavbar.php';
+        ?>
         <!-- Scrollable Canvas -->
+        <div class="flex-1 overflow-y-auto p-6 space-y-6 bg-surface-container-lowest">
 
-        <!-- Controls: Search & Actions -->
-        <div class="bg-emerald-600 flex flex-col md:flex-row md:items-center justify-between gap-4 bg-white p-4 shadow-sm border border-slate-100">
-            <div class="flex flex-1 items-center space-x-3">
-               
-            </div>
-            <a href="insert.php">
-                <button class="bg-primary text-white font-label-lg px-6 py-3 rounded-lg flex items-center justify-center space-x-2 hover:bg-emerald-700 transition-all active:scale-95 shadow-md shadow-emerald-200">
+            <!-- Controls: Search & Actions -->
+            <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 bg-white p-4 rounded-xl shadow-sm border border-slate-100">
+                <div class="flex flex-1 items-center space-x-3">
+                    <div class="relative flex-1 max-w-md">
+                        
+                    </div>
+                  
+                </div>
+                <a href="insert.php" class="bg-primary text-white font-label-lg px-6 py-3 rounded-lg flex items-center justify-center space-x-2 hover:bg-emerald-700 transition-all active:scale-95 shadow-md shadow-emerald-200">
                     <span class="material-symbols-outlined" data-icon="add">add</span>
-                    <span>Add New Product</span>
-                </button>
-            </a>
-        </div>
+                    <span>Add New Detail Transaksi</span>
+                </a>
+            </div>
+            <!-- Inventory Table -->
+            <div class="bg-white rounded-xl shadow-sm border border-slate-100 overflow-hidden">
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left">
+                        <thead>
+                            <tr class="bg-slate-50 border-b border-slate-100">
+                                <th class="px-6 py-4 text-label-md font-label-md text-slate-500 uppercase tracking-wider">No</th>
+                                <th class="px-6 py-4 text-label-md font-label-md text-slate-500 uppercase tracking-wider">ID Transaksi</th>
+                                <th class="px-6 py-4 text-label-md font-label-md text-slate-500 uppercase tracking-wider">Produk</th>
+                                <th class="px-6 py-4 text-label-md font-label-md text-slate-500 uppercase tracking-wider">Jumlah</th>
+                                <th class="px-6 py-4 text-label-md font-label-md text-slate-500 uppercase tracking-wider">Total Jumlah</th>
+                                <th class="px-6 py-4 text-label-md font-label-md text-slate-500 uppercase tracking-wider text-right">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-50">
+                            <?php
 
-        <!-- role Table -->
-        <div class="bg-white shadow-sm border border-slate-100 overflow-hidden">
-            <div class="overflow-x-auto">
-                <table class="w-full text-left">
-                    <thead>
-                        <tr class="bg-slate-50 border-b border-slate-100">
-                            <th class="px-6 py-4 text-label-md font-label-md text-slate-500 uppercase tracking-wider">no</th>
-                            <th class="px-6 py-4 text-label-md font-label-md text-slate-500 uppercase tracking-wider">name role</th>
-                            <th class="px-6 py-4 text-label-md font-label-md text-slate-500 uppercase tracking-wider text-right">Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody class="divide-y divide-slate-50">
-                        <?php
-                        $data = readRole($conn);
-                        $no = 1;
-                        while ($row = mysqli_fetch_assoc($data)) {
-                        ?>
-                            <tr class="hover:bg-slate-50 transition-colors">
-                                <td class="px-6 py-4">
-                                    <div class="flex items-center space-x-3">
-                                        <span class="px-2 py-1 bg-emerald-50 text-emerald-700 text-label-md rounded-full">
-                                            <?= $no ?>
-                                        </span>
-                                    </div>
-                                </td>
-                                <td class="px-6 py-4">
-                                    <span class="px-2 py-1 bg-emerald-50 text-emerald-700 text-label-md rounded-full">
-                                        <?= htmlspecialchars($row['nama']) ?>
-                                    </span>
-                                </td>
+                            $data = readDetailTransaksi($conn);
+                            $no = 1;
 
-                                <td class="px-6 py-4 text-right">
-                                    <div class="flex items-center justify-end space-x-2">
+                            while ($row = $data->fetch_assoc()) {
+                            ?>
+                                <!-- Low Stock Item -->
+                                <tr class="hover:bg-slate-50 transition-colors">
+                                    <td class="px-6 py-4">
+                                        <p><?= $no++ ?></p>
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        <span class="px-2 py-1"><?= $row['id_transaksi'] ?></span>
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        <span class="px-2 py-1 bg-emerald-50 text-emerald-700 text-label-md rounded-full"><?= $row['nama_product'] ?></span>
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        <span class="px-2 py-1"><?= $row['jumlah'] ?></span>
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        <span class="px-2 py-1">Rp <?= number_format($row['total_jumlah'], 0, ',', '.') ?></span>
+                                    </td>
+
+                                    <td class="px-6 py-4 text-right">
+                                      <div class="flex items-center justify-end space-x-2">
                                         <a href="edit.php?aksi=edit&id=<?= $row['id'] ?>" class="edit px-3 py-1.5 bg-green-800 text-white hover:bg-green-600 rounded-lg text-sm font-medium transition-colors">
                                             <span>Edit</span>
                                         </a>
@@ -219,35 +231,55 @@ include 'action.php';
                                             <span>Delete</span>
                                         </a>
                                     </div>
-                                </td>
-                            </tr>
-                        <?php
-                            $no++;
-                        } ?>
-                    </tbody>
-                </table>
-            </div>
-            <!-- Pagination -->
-            <div class="px-6 py-4 bg-slate-50 border-t border-slate-100 flex items-center justify-between">
-                <p class="text-body-sm text-slate-500">Showing 1 to 10 of 1,284 results</p>
-                <div class="flex items-center space-x-1">
-                    <button class="p-2 rounded border border-slate-200 text-slate-400 hover:bg-white disabled:opacity-50" disabled="">
-                        <span class="material-symbols-outlined" data-icon="chevron_left">chevron_left</span>
-                    </button>
-                    <button class="px-3 py-1 rounded bg-primary text-white text-body-sm font-bold">1</button>
-                    <button class="px-3 py-1 rounded hover:bg-white text-slate-600 text-body-sm font-medium">2</button>
-                    <button class="px-3 py-1 rounded hover:bg-white text-slate-600 text-body-sm font-medium">3</button>
-                    <span class="px-2 text-slate-400 text-body-sm">...</span>
-                    <button class="px-3 py-1 rounded hover:bg-white text-slate-600 text-body-sm font-medium">129</button>
-                    <button class="p-2 rounded border border-slate-200 text-slate-400 hover:bg-white">
-                        <span class="material-symbols-outlined" data-icon="chevron_right">chevron_right</span>
-                    </button>
+                                    </td>
+                                </tr>
+                            <?php
+                            }
+
+                            ?>
+
+
+                        </tbody>
+                    </table>
                 </div>
+                <!-- Pagination -->
+                <!-- <div class="px-6 py-4 bg-slate-50 border-t border-slate-100 flex items-center justify-between">
+                    <p class="text-body-sm text-slate-500">Showing 1 to 10 of 1,284 results</p>
+                    <div class="flex items-center space-x-1">
+                        <button class="p-2 rounded border border-slate-200 text-slate-400 hover:bg-white disabled:opacity-50" disabled="">
+                            <span class="material-symbols-outlined" data-icon="chevron_left">chevron_left</span>
+                        </button>
+                        <button class="px-3 py-1 rounded bg-primary text-white text-body-sm font-bold">1</button>
+                        <button class="px-3 py-1 rounded hover:bg-white text-slate-600 text-body-sm font-medium">2</button>
+                        <button class="px-3 py-1 rounded hover:bg-white text-slate-600 text-body-sm font-medium">3</button>
+                        <span class="px-2 text-slate-400 text-body-sm">...</span>
+                        <button class="px-3 py-1 rounded hover:bg-white text-slate-600 text-body-sm font-medium">129</button>
+                        <button class="p-2 rounded border border-slate-200 text-slate-400 hover:bg-white">
+                            <span class="material-symbols-outlined" data-icon="chevron_right">chevron_right</span>
+                        </button>
+                    </div>
+                </div> -->
             </div>
-        </div>
         </div>
         <!-- BottomNavBar (Shared Component Mobile Only) -->
-        <?php require_once '../layout/bottomnavbar.php'; ?>
+        <nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-2 pb-safe h-16 bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 shadow-[0_-2px_10px_rgba(0,0,0,0.05)]">
+            <a class="flex flex-col items-center justify-center text-slate-500 dark:text-slate-400 hover:text-emerald-500" href="#">
+                <span class="material-symbols-outlined" data-icon="shopping_cart">shopping_cart</span>
+                <span class="text-[10px] font-semibold">POS</span>
+            </a>
+            <a class="flex flex-col items-center justify-center bg-emerald-100 dark:bg-emerald-900/50 text-emerald-800 dark:text-emerald-100 rounded-2xl px-4 py-1" href="#">
+                <span class="material-symbols-outlined" data-icon="inventory" style="font-variation-settings: 'FILL' 1;">inventory</span>
+                <span class="text-[10px] font-semibold">Stock</span>
+            </a>
+            <a class="flex flex-col items-center justify-center text-slate-500 dark:text-slate-400 hover:text-emerald-500" href="#">
+                <span class="material-symbols-outlined" data-icon="receipt_long">receipt_long</span>
+                <span class="text-[10px] font-semibold">Orders</span>
+            </a>
+            <a class="flex flex-col items-center justify-center text-slate-500 dark:text-slate-400 hover:text-emerald-500" href="#">
+                <span class="material-symbols-outlined" data-icon="menu">menu</span>
+                <span class="text-[10px] font-semibold">More</span>
+            </a>
+        </nav>
     </main>
 </body>
 

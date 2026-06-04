@@ -167,70 +167,20 @@ include 'action.php';
         <!-- Scrollable Canvas -->
         <div class="flex-1 overflow-y-auto p-6 space-y-6 bg-surface-container-lowest">
             <!-- Stats Bar -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-                <div class="bg-white p-4 rounded-xl border border-slate-100 shadow-sm flex items-center space-x-4">
-                    <div class="w-12 h-12 bg-primary-container/10 text-primary rounded-lg flex items-center justify-center">
-                        <span class="material-symbols-outlined" data-icon="inventory_2" style="font-variation-settings: 'FILL' 1;">inventory_2</span>
-                    </div>
-                    <div>
-                        <p class="text-label-md font-label-md text-slate-500 uppercase tracking-wider">Total Products</p>
-                        <p class="text-headline-sm font-headline-sm text-on-surface">1,284</p>
-                    </div>
-                </div>
-                <div class="bg-white p-4 rounded-xl border border-slate-100 shadow-sm flex items-center space-x-4">
-                    <div class="w-12 h-12 bg-tertiary-container/10 text-tertiary rounded-lg flex items-center justify-center">
-                        <span class="material-symbols-outlined" data-icon="warning" style="font-variation-settings: 'FILL' 1;">warning</span>
-                    </div>
-                    <div>
-                        <p class="text-label-md font-label-md text-slate-500 uppercase tracking-wider">Low Stock</p>
-                        <p class="text-headline-sm font-headline-sm text-tertiary">3 Items</p>
-                    </div>
-                </div>
-                <div class="bg-white p-4 rounded-xl border border-slate-100 shadow-sm flex items-center space-x-4">
-                    <div class="w-12 h-12 bg-red-50 text-error rounded-lg flex items-center justify-center">
-                        <span class="material-symbols-outlined" data-icon="error" style="font-variation-settings: 'FILL' 1;">error</span>
-                    </div>
-                    <div>
-                        <p class="text-label-md font-label-md text-slate-500 uppercase tracking-wider">Out of Stock</p>
-                        <p class="text-headline-sm font-headline-sm text-on-surface">0</p>
-                    </div>
-                </div>
-                <div class="bg-white p-4 rounded-xl border border-slate-100 shadow-sm flex items-center space-x-4">
-                    <div class="w-12 h-12 bg-emerald-50 text-emerald-700 rounded-lg flex items-center justify-center">
-                        <span class="material-symbols-outlined" data-icon="payments" style="font-variation-settings: 'FILL' 1;">payments</span>
-                    </div>
-                    <div>
-                        <p class="text-label-md font-label-md text-slate-500 uppercase tracking-wider">Total Value</p>
-                        <p class="text-headline-sm font-headline-sm text-on-surface">Rp 42.5M</p>
-                    </div>
-                </div>
-            </div>
+          
             <!-- Controls: Search & Actions -->
             <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 bg-white p-4 rounded-xl shadow-sm border border-slate-100">
                 <div class="flex flex-1 items-center space-x-3">
                     <div class="relative flex-1 max-w-md">
-                        <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" data-icon="search">search</span>
-                        <input class="w-full pl-10 pr-4 py-2.5 rounded-lg border border-slate-200 focus:ring-2 focus:ring-primary focus:border-primary text-body-sm transition-all" placeholder="Search product name, SKU..." type="text" />
+                        
                     </div>
-                    <select class="py-2.5 px-4 rounded-lg border border-slate-200 bg-white text-body-sm focus:ring-2 focus:ring-primary focus:border-primary">
-                        <option>All Categories</option>
-                        <option>Food</option>
-                        <option>Drinks</option>
-                        <option>Staple</option>
-                        <option>Dairy</option>
-                    </select>
-                    <select class="py-2.5 px-4 rounded-lg border border-slate-200 bg-white text-body-sm focus:ring-2 focus:ring-primary focus:border-primary">
-                        <option>All Stock Levels</option>
-                        <option>In Stock</option>
-                        <option>Low Stock</option>
-                        <option>Out of Stock</option>
-                    </select>
+                   
                 </div>
                 <a href="insert.php">
-                <button class="bg-primary text-white font-label-lg px-6 py-3 rounded-lg flex items-center justify-center space-x-2 hover:bg-emerald-700 transition-all active:scale-95 shadow-md shadow-emerald-200">
-                    <span class="material-symbols-outlined" data-icon="add">add</span>
-                    <span>Add New Product</span>
-                </button>
+                    <button class="bg-primary text-white font-label-lg px-6 py-3 rounded-lg flex items-center justify-center space-x-2 hover:bg-emerald-700 transition-all active:scale-95 shadow-md shadow-emerald-200">
+                        <span class="material-symbols-outlined" data-icon="add">add</span>
+                        <span>Add New Product</span>
+                    </button>
                 </a>
             </div>
 
@@ -266,14 +216,14 @@ include 'action.php';
                                     </td>
 
                                     <td class="px-6 py-4 text-right">
-                                        <div class="flex items-center justify-end space-x-2">
-                                            <a   href="edit.php?aksi=edit&id=<?= $row['id'] ?>" class="edit">
-                                                <span class="material-symbols-outlined" data-icon="edit">edit</span>
-                                            </a>
-                                             <a href="action.php?aksi=delete&id=<?= $row['id'] ?>" class="delete" onclick="return confirm('Yakin hapus data ini?')">
-                                                <span class="material-symbols-outlined"             data-icon="delete">delete</span>
-                                                </a>
-                                        </div>
+                                   <div class="flex items-center justify-end space-x-2">
+                                        <a href="edit.php?aksi=edit&id=<?= $row['id'] ?>" class="edit px-3 py-1.5 bg-green-800 text-white hover:bg-green-600 rounded-lg text-sm font-medium transition-colors">
+                                            <span>Edit</span>
+                                        </a>
+                                        <a href="action.php?aksi=delete&id=<?= $row['id'] ?>" class="delete px-3 py-1.5 bg-red-800 text-white hover:bg-red-300 rounded-lg text-sm font-medium transition-colors" onclick="return confirm('Yakin hapus data ini?')">
+                                            <span>Delete</span>
+                                        </a>
+                                    </div>
                                     </td>
                                 </tr>
                             <?php
