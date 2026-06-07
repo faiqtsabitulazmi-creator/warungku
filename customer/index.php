@@ -21,9 +21,9 @@
                         "surface-container-low": "#f2f4f6",
                         "tertiary": "#855300",
                         "secondary-fixed": "#d3e4fe",
-                        "primary-container": "#10b981",
+                        "primary-container": "#b91010",
                         "background": "#f7f9fb",
-                        "inverse-primary": "#4edea3",
+                        "inverse-primary": "#de4e4e",
                         "outline": "#6c7a71",
                         "outline-variant": "#bbcabf",
                         "on-background": "#191c1e",
@@ -35,7 +35,7 @@
                         "on-tertiary": "#ffffff",
                         "on-surface-variant": "#3c4a42",
                         "inverse-on-surface": "#eff1f3",
-                        "surface-tint": "#006c49",
+                        "surface-tint": "#6c0000",
                         "secondary": "#505f76",
                         "on-tertiary-fixed-variant": "#653e00",
                         "tertiary-fixed": "#ffddb8",
@@ -44,25 +44,25 @@
                         "surface-variant": "#e0e3e5",
                         "on-error-container": "#93000a",
                         "on-secondary-container": "#54647a",
-                        "on-primary-fixed-variant": "#005236",
+                        "on-primary-fixed-variant": "#520000",
                         "on-secondary": "#ffffff",
                         "surface-container-lowest": "#ffffff",
                         "inverse-surface": "#2d3133",
                         "secondary-fixed-dim": "#b7c8e1",
-                        "primary-fixed-dim": "#4edea3",
+                        "primary-fixed-dim": "#de4e4e",
                         "on-tertiary-fixed": "#2a1700",
                         "surface-dim": "#d8dadc",
                         "on-surface": "#191c1e",
                         "secondary-container": "#d0e1fb",
                         "surface-container-high": "#e6e8ea",
-                        "primary-fixed": "#6ffbbe",
-                        "on-primary-container": "#00422b",
-                        "primary": "#006c49",
+                        "primary-fixed": "#fb6f6f",
+                        "on-primary-container": "#420000",
+                        "primary": "#6c0000",
                         "surface-container": "#eceef0",
                         "error-container": "#ffdad6",
                         "surface-container-highest": "#e0e3e5",
                         "on-tertiary-container": "#523200",
-                        "on-primary-fixed": "#002113",
+                        "on-primary-fixed": "#210000",
                         "error": "#ba1a1a"
                     },
                     "borderRadius": {
@@ -167,7 +167,7 @@
         <div class="flex-1 overflow-y-auto p-6 space-y-6">
             <!-- Category Filter Chips -->
             <div class="flex items-center gap-3 mb-lg overflow-x-auto pb-2 scrollbar-hide">
-                <button class="px-6 py-2 bg-emerald-600 text-white rounded-full font-label-lg shadow-md whitespace-nowrap">All Items</button>
+                <button class="px-6 py-2 bg-yellow-500 text-white rounded-full font-label-lg shadow-md whitespace-nowrap">All Items</button>
                 <?php
                 $dataCategory = showDataCategory($conn);
 
@@ -192,13 +192,13 @@
                         <div class="bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden hover:shadow-lg transition-shadow cursor-pointer flex flex-col group">
                             <div class="aspect-square bg-slate-100 overflow-hidden relative">
                                 <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" data-alt="A high-quality studio shot of premium long-grain jasmine rice in a rustic burlap sack, positioned on a clean white background. The lighting is bright and airy, typical of a modern e-commerce platform, with soft shadows. The overall aesthetic is clean, minimalist, and dependable, conveying high-quality agricultural products." src="../product/image_product/<?php echo $product['image'] ?>" />
-                                <div class="absolute top-2 right-2 bg-emerald-500 text-white text-[10px] font-bold px-2 py-1 rounded">STOCK: <?= $product['stock'] ?></div>
+                                <div class="absolute top-2 right-2 bg-red-500 text-white text-[10px] font-bold px-2 py-1 rounded">STOCK: <?= $product['stock'] ?></div>
                             </div>
                             <div class="p-md flex flex-col flex-1">
                                 <h3 class="font-headline-sm text-on-surface mb-1"><?= $product['nama'] ?></h3>
                                 <p class="text-body-sm text-slate-500 mb-4"><?= $product['nama_category'] ?></p>
                                 <div class="mt-auto flex justify-between items-center">
-                                    <span class="font-headline-sm text-emerald-600">Rp <?= number_format($product['harga'], 0, ',', '.') ?></span>
+                                    <span class="font-headline-sm text-red-600">Rp <?= number_format($product['harga'], 0, ',', '.') ?></span>
                                     <a href="action.php?aksi=insertProductToCart&id_user=8&id_product=<?= $product['id'] ?>" class="w-10 h-10 bg-primary-container text-on-primary-container rounded-lg flex items-center justify-center hover:brightness-95 active:scale-90 transition-all">
                                         <span class="material-symbols-outlined" data-icon="add">add</span>
                                     </a>

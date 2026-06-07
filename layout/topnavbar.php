@@ -3,7 +3,7 @@
         <span class="text-xl font-bold text-emerald-600">Warung Saya</span>
     </div>
     <div class="hidden md:flex items-center">
-        <h2 class="font-headline-md text-headline-md text-on-surface">Cafe Business</h2>
+        <h2 class="font-headline-md text-headline-md text-on-surface">Restaurant Business</h2>
     </div>
     <div class="flex items-center space-x-4">
         <div class="relative hidden sm:block">

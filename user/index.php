@@ -154,7 +154,7 @@
     </style>
 </head>
 
-<body class="bg-emerald-600 text-on-surface flex min-h-screen">
+<body class="bg-red-600 text-on-surface flex min-h-screen">
     <!-- SideNavBar (Shared Component) -->
     <?php
     require_once '../layout/sidebar.php';
@@ -163,20 +163,20 @@
     <main class="flex-1 flex flex-col h-screen overflow-hidden">
         <!-- TopNavBar (Shared Component) -->
         <?php
-        $page_name = "Product";
+        $page_name = "User";
         require_once '../layout/topnavbar.php';
         ?>
         <!-- Scrollable Canvas -->
         <div class="flex-1 overflow-y-auto p-6 space-y-6 bg-surface-container-lowest">
 
             <!-- Controls: Search & Actions -->
-            <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 bg-white p-4 rounded-xl shadow-sm border border-slate-100">
+            <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 bg-red-600 p-4 rounded-xl shadow-sm border border-slate-100">
                 <div class="flex flex-1 items-center space-x-3">
                     
                 </div>
-                <a href="insert.php" class="bg-primary text-white font-label-lg px-6 py-3 rounded-lg flex items-center justify-center space-x-2 hover:bg-emerald-700 transition-all active:scale-95 shadow-md shadow-emerald-200">
+                <a href="insert.php" class="bg-yellow-500 text-white font-label-lg px-6 py-3 rounded-lg flex items-center justify-center space-x-2 hover:bg-yellow-600 transition-all active:scale-95 shadow-md shadow-red-200">
                     <span class="material-symbols-outlined" data-icon="add">add</span>
-                    <span>Add New Product</span>
+                    <span>Add New User</span>
                 </a>
             </div>
             <!-- Inventory Table -->
@@ -208,7 +208,7 @@
                                     <td class="px-6 py-4">
                                         <p><?= $no++ ?></p>
                                     </td>
-                                    <td class="px-6 py-4">
+                                    <td class="px-2 py-1 bg-red-100 text-red-700 rounded-full text-xs font-semibold">
                                         <span class="px-2 py-1"><?= $row['nama'] ?></span>
                                     </td>
                                     <td class="px-6 py-4">
@@ -223,13 +223,13 @@
                                     <td class="px-6 py-4">
                                         <span class="px-2 py-1 "><?= $row['password'] ?></span>
                                     </td>
-                                    <td class="px-6 py-4">
+                                    <td class="px-2 py-1 bg-red-100 text-red-700 rounded-full text-xs font-semibold">
                                         <span class="px-2 py-1 bg-emerald-50 text-emerald-700 text-label-md rounded-full"><?= $row['nama_role'] ?></span>
                                     </td>
 
                                     <td class="px-6 py-4 text-right">
                                        <div class="flex items-center justify-end space-x-2">
-                                        <a href="edit.php?aksi=edit&id=<?= $row['id'] ?>" class="edit px-3 py-1.5 bg-green-800 text-white hover:bg-green-600 rounded-lg text-sm font-medium transition-colors">
+                                        <a href="edit.php?aksi=edit&id=<?= $row['id'] ?>" class="edit px-3 py-1.5 bg-yellow-500 text-white hover:bg-yellow-600 rounded-lg text-sm font-medium transition-colors">
                                             <span>Edit</span>
                                         </a>
                                         <a href="action.php?aksi=delete&id=<?= $row['id'] ?>" class="delete px-3 py-1.5 bg-red-800 text-white hover:bg-red-300 rounded-lg text-sm font-medium transition-colors" onclick="return confirm('Yakin hapus data ini?')">

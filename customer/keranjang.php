@@ -1,6 +1,6 @@
 <aside class="fixed right-0 h-screen w-[400px] bg-white shadow-xl z-30 flex flex-col border-l border-slate-200">
         <div class="p-lg border-b border-slate-100 flex justify-between items-center">
-            <h2 class="font-headline-md text-on-surface">Current Order</h2>
+            <h2 class="font-headline-md text-on-surface">Pesanan saat ini</h2>
             <button class="text-slate-400 hover:text-red-500 transition-colors">
                 <span class="material-symbols-outlined" data-icon="delete_sweep">delete_sweep</span>
             </button>
@@ -33,7 +33,7 @@
         </div>
            
         <!-- Payment Summary -->
-        <div class="p-lg bg-slate-50 border-t border-slate-200 space-y-3 ">
+        <div class="p-lg bg-slate-50 border-t border-red-200 space-y-3 ">
           
             <div class="flex justify-between text-headline-sm font-bold text-on-surface pt-2">
                 <span>Total</span>
@@ -45,7 +45,7 @@
                     <?php
                 }else{
                     ?>
-                    <span class="text-emerald-700">Rp 0</span>
+                    <span class="text-red-700">Rp 0</span>
                     <?php
                 }
                 ?>

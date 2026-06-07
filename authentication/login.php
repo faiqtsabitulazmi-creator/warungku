@@ -28,7 +28,7 @@
                         "background": "#f7f9fb",
                         "secondary-fixed-dim": "#b7c8e1",
                         "tertiary": "#855300",
-                        "on-primary-fixed-variant": "#005236",
+                        "on-primary-fixed-variant": "#520000",
                         "secondary": "#505f76",
                         "on-tertiary-container": "#523200",
                         "inverse-surface": "#2d3133",
@@ -42,26 +42,26 @@
                         "inverse-on-surface": "#eff1f3",
                         "surface-dim": "#d8dadc",
                         "surface-container-highest": "#e0e3e5",
-                        "primary-fixed-dim": "#4edea3",
-                        "primary-container": "#458a56fd",
-                        "on-primary-fixed": "#002113",
+                        "primary-fixed-dim": "#de4e4e",
+                        "primary-container": "#8a4545fd",
+                        "on-primary-fixed": "#210000",
                         "surface-variant": "#e0e3e5",
-                        "primary-fixed": "#6ffbbe",
+                        "primary-fixed": "#fb6f6f",
                         "on-error": "#ffffff",
-                        "inverse-primary": "#4edea3",
+                        "inverse-primary": "#de4e4e",
                         "tertiary-container": "#e29100",
-                        "primary": "#458a56fd",
+                        "primary": "#8a4545fd",
                         "surface-container-high": "#e6e8ea",
                         "on-secondary": "#ffffff",
                         "surface": "#f7f9fb",
                         "secondary-container": "#d0e1fb",
                         "error-container": "#ffdad6",
-                        "on-primary-container": "#00420e",
+                        "on-primary-container": "#420000",
                         "tertiary-fixed": "#ffddb8",
                         "on-surface": "#191c1e",
-                        "surface-tint": "#006c49",
+                        "surface-tint": "#6c0000",
                         "surface-bright": "#f7f9fb",
-                        "on-surface-variant": "#3c4a42",
+                        "on-surface-variant": "#4a3c3c",
                         "outline-variant": "#bbcabf",
                         "surface-container": "#eceef0"
                     },
@@ -163,7 +163,7 @@
                 <header class="space-y-sm">
                     <div class="flex items-center space-x-sm">
 
-                        <h1 class="font-headline-md text-headline-md text-primary">Matcha Time</h1>
+                        <h1 class="font-headline-md text-headline-md text-primary">Mie Kobong</h1>
                     </div>
                     <div class="space-y-xs">
                         <h2 class="font-headline-lg text-headline-lg text-on-surface">Welcome</h2>

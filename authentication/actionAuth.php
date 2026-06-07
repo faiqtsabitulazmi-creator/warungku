@@ -3,36 +3,38 @@
 include '../connection.php';
 
 
-if(isset($_GET['aksi'])){
+if (isset($_GET['aksi'])) {
     $aksi = $_GET['aksi'];
-    if($aksi == "register"){
+    if ($aksi == "register") {
         $nama = $_POST['nama'];
         $alamat = $_POST['alamat'];
         $no_hp = $_POST['no_hp'];
         $username = $_POST['username'];
         $password = $_POST['password'];
         register($conn, $nama, $alamat, $no_hp, $username, $password);
-    } elseif($aksi == "login"){
+    } elseif ($aksi == "login") {
         $username = $_POST['username'];
         $password = $_POST['password'];
         login($conn, $username, $password);
-    } elseif($aksi == "logout"){
+    } elseif ($aksi == "logout") {
         logout();
     }
 }
 
-function cekIdCustomer($con){
+function cekIdCustomer($con)
+{
     $query = "select * from role where nama = 'Customer'";
     $result = $con->execute_query($query);
     $row = $result->fetch_assoc();
     return $row['id'];
 }
 
-function register($con, $nama, $alamat, $no_hp, $username, $password){
+function register($con, $nama, $alamat, $no_hp, $username, $password)
+{
     $id_role = cekIdCustomer($con);
     $query = "INSERT INTO user (nama, alamat, no_hp, username, password, id_role) VALUES ('$nama', '$alamat', '$no_hp', '$username', '$password', '$id_role')";
     $result = $con->execute_query($query);
-    if($result){
+    if ($result) {
         session_start();
         $_SESSION['id_user'] = $con->insert_id;
         $_SESSION['nama'] = $nama;
@@ -43,32 +45,31 @@ function register($con, $nama, $alamat, $no_hp, $username, $password){
     }
 }
 
-function login($con, $username, $password){
+function login($con, $username, $password)
+{
     $query = "SELECT * FROM user WHERE username = '$username' AND password = '$password'";
     $result = $con->execute_query($query)->fetch_assoc();
-    if($result){
+    if ($result) {
         // session
         session_start();
         $_SESSION['id_user'] = $result['id'];
         $_SESSION['nama'] = $result['nama'];
         $_SESSION['role'] = $result['id_role'];
-        if($_SESSION['role'] == 1){
-            header("Location: ../product/index.php");
-        } elseif($_SESSION['role'] == 4){
-            header("Location: ../customer/index.php");
+        if ($_SESSION['role'] == 5) {
+            header("Location: ../product/index.php"); // admin
+        } elseif ($_SESSION['role'] == 6) {
+            header("Location: ../customer/index.php"); // customer
+        } else {
+            header("Location: ../customer/index.php"); // fallback
         }
-
     } else {
         echo "Invalid username or password.";
     }
 }
 
-function logout(){
+function logout()
+{
+    session_start();
     session_destroy();
     header("Location: ../authentication/login.php");
 }
-
-
-
-
-?>
