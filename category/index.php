@@ -25,14 +25,14 @@ include 'action.php';
                         "surface-container-low": "#f2f4f6",
                         "on-tertiary": "#ffffff",
                         "secondary-fixed-dim": "#b7c8e1",
-                        "primary-container": "#10b981",
+                        "primary-container": "#b91010",
                         "surface-bright": "#f7f9fb",
                         "on-secondary-fixed": "#0b1c30",
                         "on-error": "#ffffff",
-                        "surface-tint": "#006c49",
+                        "surface-tint": "#6c0000",
                         "secondary-fixed": "#d3e4fe",
                         "surface-container-high": "#e6e8ea",
-                        "primary": "#006c49",
+                        "primary": "#6c0000",
                         "outline": "#6c7a71",
                         "tertiary-fixed-dim": "#ffb95f",
                         "tertiary": "#855300",
@@ -40,12 +40,12 @@ include 'action.php';
                         "on-secondary-fixed-variant": "#38485d",
                         "on-tertiary-container": "#523200",
                         "error": "#ba1a1a",
-                        "primary-fixed-dim": "#4edea3",
-                        "on-primary-container": "#00422b",
+                        "primary-fixed-dim": "#de4e4e",
+                        "on-primary-container": "#420000",
                         "on-background": "#191c1e",
                         "surface-container": "#eceef0",
                         "on-surface": "#191c1e",
-                        "primary-fixed": "#6ffbbe",
+                        "primary-fixed": "#fb6f6f",
                         "on-primary": "#ffffff",
                         "on-secondary-container": "#54647a",
                         "surface-variant": "#e0e3e5",
@@ -53,10 +53,10 @@ include 'action.php';
                         "background": "#f7f9fb",
                         "error-container": "#ffdad6",
                         "surface": "#f7f9fb",
-                        "on-primary-fixed-variant": "#005236",
+                        "on-primary-fixed-variant": "#520000",
                         "surface-dim": "#d8dadc",
                         "tertiary-container": "#e29100",
-                        "inverse-primary": "#4edea3",
+                        "inverse-primary": "#de4e4e",
                         "inverse-on-surface": "#eff1f3",
                         "tertiary-fixed": "#ffddb8",
                         "on-tertiary-fixed": "#2a1700",
@@ -64,8 +64,8 @@ include 'action.php';
                         "secondary": "#505f76",
                         "on-secondary": "#ffffff",
                         "on-error-container": "#93000a",
-                        "on-surface-variant": "#3c4a42",
-                        "on-primary-fixed": "#002113",
+                        "on-surface-variant": "#4a3e3c",
+                        "on-primary-fixed": "#210000",
                         "secondary-container": "#d0e1fb"
                     },
                     "borderRadius": {
@@ -217,7 +217,7 @@ include 'action.php';
 
                                     <td class="px-6 py-4 text-right">
                                    <div class="flex items-center justify-end space-x-2">
-                                        <a href="edit.php?aksi=edit&id=<?= $row['id'] ?>" class="edit px-3 py-1.5 bg-green-800 text-white hover:bg-green-600 rounded-lg text-sm font-medium transition-colors">
+                                        <a href="edit.php?aksi=edit&id=<?= $row['id'] ?>" class="edit px-3 py-1.5 bg-yellow-800 text-white hover:bg-green-600 rounded-lg text-sm font-medium transition-colors">
                                             <span>Edit</span>
                                         </a>
                                         <a href="action.php?aksi=delete&id=<?= $row['id'] ?>" class="delete px-3 py-1.5 bg-red-800 text-white hover:bg-red-300 rounded-lg text-sm font-medium transition-colors" onclick="return confirm('Yakin hapus data ini?')">
@@ -233,22 +233,7 @@ include 'action.php';
                     </table>
                 </div>
                 <!-- Pagination -->
-                <div class="px-6 py-4 bg-slate-50 border-t border-slate-100 flex items-center justify-between">
-                    <p class="text-body-sm text-slate-500">Showing 1 to 10 of 1,284 results</p>
-                    <div class="flex items-center space-x-1">
-                        <button class="p-2 rounded border border-slate-200 text-slate-400 hover:bg-white disabled:opacity-50" disabled="">
-                            <span class="material-symbols-outlined" data-icon="chevron_left">chevron_left</span>
-                        </button>
-                        <button class="px-3 py-1 rounded bg-primary text-white text-body-sm font-bold">1</button>
-                        <button class="px-3 py-1 rounded hover:bg-white text-slate-600 text-body-sm font-medium">2</button>
-                        <button class="px-3 py-1 rounded hover:bg-white text-slate-600 text-body-sm font-medium">3</button>
-                        <span class="px-2 text-slate-400 text-body-sm">...</span>
-                        <button class="px-3 py-1 rounded hover:bg-white text-slate-600 text-body-sm font-medium">129</button>
-                        <button class="p-2 rounded border border-slate-200 text-slate-400 hover:bg-white">
-                            <span class="material-symbols-outlined" data-icon="chevron_right">chevron_right</span>
-                        </button>
-                    </div>
-                </div>
+                
             </div>
         </div>
         <!-- BottomNavBar (Shared Component Mobile Only) -->

@@ -1,4 +1,7 @@
-<?php include 'action.php'; ?>
+<?php 
+session_start();
+include 'action.php';
+?>
 
 <!DOCTYPE html>
 
@@ -199,7 +202,7 @@
                                 <p class="text-body-sm text-slate-500 mb-4"><?= $product['nama_category'] ?></p>
                                 <div class="mt-auto flex justify-between items-center">
                                     <span class="font-headline-sm text-red-600">Rp <?= number_format($product['harga'], 0, ',', '.') ?></span>
-                                    <a href="action.php?aksi=insertProductToCart&id_user=8&id_product=<?= $product['id'] ?>" class="w-10 h-10 bg-primary-container text-on-primary-container rounded-lg flex items-center justify-center hover:brightness-95 active:scale-90 transition-all">
+                                    <a href="action.php?aksi=insertProductToCart&id_user=<?= $_SESSION['id_user'] ?>&id_product=<?= $product['id'] ?>" class="w-10 h-10 bg-primary-container text-on-primary-container rounded-lg flex items-center justify-center hover:brightness-95 active:scale-90 transition-all">
                                         <span class="material-symbols-outlined" data-icon="add">add</span>
                                     </a>
                                 </div>
